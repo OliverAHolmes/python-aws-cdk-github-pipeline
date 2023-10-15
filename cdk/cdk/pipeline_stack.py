@@ -22,10 +22,11 @@ class CodePipelineStack(Stack):
                     repo_string="OliverAHolmes/python-aws-cdk-github-pipeline"
 				),
                 commands=[
+                    "cd cdk",
                     "npm install -g aws-cdk",  # Installs the cdk cli on Codebuild
                     "pip install -r requirements.txt",  # Instructs Codebuild to install required packages
-                    "cd cdk",
                     "npx cdk synth",
-                ]
+                ],
+                primary_output_directory='cdk/cdk.out',
             ),
         )

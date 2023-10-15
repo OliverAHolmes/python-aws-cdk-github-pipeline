@@ -13,8 +13,6 @@ black = "*"
 httpx = "*"
 pytest = "*"
 pytest-cov = "*"
-aws-cdk-lib = "*"
-constructs = "*"
 
 [requires]
 python_version = "3.11"
