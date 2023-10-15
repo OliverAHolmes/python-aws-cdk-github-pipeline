@@ -24,7 +24,8 @@ class CodePipelineStack(Stack):
                 commands=[
                     "npm install -g aws-cdk",  # Installs the cdk cli on Codebuild
                     "pip install -r requirements.txt",  # Instructs Codebuild to install required packages
-                    "npx cdk synth --app 'cdk'",
+                    "cd cdk",
+                    "npx cdk synth",
                 ]
             ),
         )
