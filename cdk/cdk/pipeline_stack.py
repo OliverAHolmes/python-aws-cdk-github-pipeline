@@ -5,6 +5,8 @@ from aws_cdk import (
 )
 from constructs import Construct
 
+from cdk.deploy_stack import FastAPIAppStage
+
 
 class CodePipelineStack(Stack):
 
@@ -30,3 +32,18 @@ class CodePipelineStack(Stack):
                 primary_output_directory='cdk/cdk.out',
             ),
         )
+
+        # Add a new stage to the pipeline
+        app_stage = pipeline.add_stage(FastAPIAppStage(self, "MyAppStage"))
+
+        app_stage.add_post(
+            pipelines.ManualApprovalStep("ManualApproval")
+        )
+
+        # # Creates an AWS CodePipeline with source, build, and deploy stages
+        # pipeline.Pipeline(
+        #     self, "BuildDeployPipeline",
+        #     pipeline_name="ImageBuildDeployPipeline",
+        #     stages=[source_stage, build_stage, deploy_stage]
+        # )
+
