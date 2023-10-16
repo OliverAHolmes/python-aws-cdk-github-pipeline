@@ -14,9 +14,6 @@ class CodePipelineStack(Stack):
         super().__init__(scope, id, **kwargs)
 
         # Read environment variables
-        connection_arn = os.environ.get("CONNECTION_ARN")
-        branch = os.environ.get("BRANCH")
-        repo_string = os.environ.get("REPO_STRING")
 
         pipeline = pipelines.CodePipeline(
             self,
@@ -24,9 +21,9 @@ class CodePipelineStack(Stack):
             synth=pipelines.ShellStep(
                 "Synth",
                 input=pipelines.CodePipelineSource.connection(
-                    connection_arn=connection_arn,
-                    branch=branch,
-                    repo_string=repo_string,
+                    connection_arn="your-connection-arn",
+                    branch="branch-name",
+                    repo_string="owner/repo-name",
                 ),
                 commands=[
                     "cd cdk",
