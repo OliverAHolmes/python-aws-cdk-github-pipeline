@@ -5,7 +5,7 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-from cdk.deploy_stack import FastAPIAppStage
+from cdk.FastAPI_stack import FastAPIAppStage
 
 
 class CodePipelineStack(Stack):
@@ -34,11 +34,11 @@ class CodePipelineStack(Stack):
         )
 
         # Add a new stage to the pipeline
-        app_stage = pipeline.add_stage(FastAPIAppStage(self, "MyAppStage"))
+        app_stage = pipeline.add_stage(FastAPIAppStage(self, "Test"))
 
-        app_stage.add_post(
-            pipelines.ManualApprovalStep("ManualApproval")
-        )
+        # app_stage.add_post(
+        #     pipelines.ManualApprovalStep("ManualApproval")
+        # )
 
         # # Creates an AWS CodePipeline with source, build, and deploy stages
         # pipeline.Pipeline(

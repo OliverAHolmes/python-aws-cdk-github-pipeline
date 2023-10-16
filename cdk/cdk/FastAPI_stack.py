@@ -16,7 +16,7 @@ class FastAPIStack(Stack):
         # Create the Lambda function
         api_lambda = _lambda.Function(
             self,
-            "ApiLambda",
+            "FastAPIApiLambda",
             code=_lambda.Code.from_asset(
                 "../api",
                 bundling={
@@ -37,7 +37,7 @@ class FastAPIStack(Stack):
         # Create the API Gateway
         api = apigateway.LambdaRestApi(
             self,
-            "ApiGateway",
+            "FastAPIApiGateway",
             handler=api_lambda,
             deploy_options={"stage_name": "prod"},
         )

@@ -162,3 +162,5 @@ cython_debug/
 # CDK Context & Staging files
 .cdk.staging/
 cdk.out/
+
+.DS_Store
