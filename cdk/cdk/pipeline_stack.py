@@ -34,15 +34,16 @@ class CodePipelineStack(Stack):
         )
 
         # Add a new stage to the pipeline
-        app_stage = pipeline.add_stage(FastAPIAppStage(self, "Test"))
+        app_stage = pipeline.add_stage(FastAPIAppStage(self, "FastAPIAppDev", stage_name="dev"))
 
-        # app_stage.add_post(
-        #     pipelines.ManualApprovalStep("ManualApproval")
-        # )
+        app_stage.add_post(
+            pipelines.ManualApprovalStep("ManualApproval")
+        )
 
-        # # Creates an AWS CodePipeline with source, build, and deploy stages
-        # pipeline.Pipeline(
-        #     self, "BuildDeployPipeline",
-        #     pipeline_name="ImageBuildDeployPipeline",
-        #     stages=[source_stage, build_stage, deploy_stage]
-        # )
+        app_stage = pipeline.add_stage(FastAPIAppStage(self, "FastAPIAppTest", stage_name="test"))
+
+        app_stage.add_post(
+            pipelines.ManualApprovalStep("ManualApproval")
+        )
+
+        app_stage = pipeline.add_stage(FastAPIAppStage(self, "FastAPIAppProd", stage_name="prod"))
