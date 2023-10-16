@@ -18,7 +18,7 @@ class FastAPIStack(Stack):
             self,
             "ApiLambda",
             code=_lambda.Code.from_asset(
-                "../api",
+                "../../api",
                 bundling={
                     # pylint: disable=no-member
                     "image": _lambda.Runtime.PYTHON_3_11.bundling_image,
