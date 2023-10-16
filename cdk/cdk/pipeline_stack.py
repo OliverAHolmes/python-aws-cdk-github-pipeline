@@ -30,6 +30,7 @@ class CodePipelineStack(Stack):
                 primary_output_directory="cdk/cdk.out",
             ),
             docker_enabled_for_synth=True,
+            docker_enabled_for_self_mutation=True,
         )
 
         # Add a new stage to the pipeline
