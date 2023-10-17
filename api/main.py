@@ -17,7 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from routes import router
 
-app = FastAPI(openapi_prefix='/prod/')
+app = FastAPI(openapi_prefix="/prod/")
 app.include_router(router)
 
 # CORS configuration

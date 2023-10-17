@@ -11,14 +11,13 @@ from constructs import Construct
 
 class FastAPIStack(Stack):
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
-
         # Extract stage_name from kwargs
         stage_name = kwargs.pop("stage_name", None)
-        
+
         # Ensure stage_name is provided
         if not stage_name:
             raise ValueError("stage_name must be provided in kwargs")
-        
+
         super().__init__(scope, id, **kwargs)
 
         # Create the Lambda function
